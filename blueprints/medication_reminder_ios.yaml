@@ -36,6 +36,7 @@ blueprint:
     input_taken:
       name: Medication
       description: Enter the name of the medication to track
+      initial:
 
     notification_title:
       name: Notification title (Optional)
