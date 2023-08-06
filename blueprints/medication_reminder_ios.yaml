@@ -38,9 +38,9 @@ blueprint:
       name: Medication
       description: Enter the name of the medication to track
 
-    variables:
-      - !input input_taken
-      - " Taken"
+  # variables:
+  #   - !input input_taken
+  #   - ''' Taken'''
 
     notification_title:
       name: Notification title (Optional)
@@ -121,7 +121,7 @@ action:
   - service: input_boolean.turn_off
     target:
       entity_id: !input input_boolean
-  - alias: "Notify until the medication has been take"
+  - alias: "Notify until the medication has been taken"
     repeat:
       while:
         - condition: state
@@ -171,7 +171,7 @@ action:
                   target:
                     entity_id: !input input_calendar
                   data:
-                    summary: '${vars[0] + vars[1]}'
+                    summary: "Medicine taken"
                     start_date_time: "{{ now() }}"
                     end_date_time: "{{ now() + timedelta(seconds=1) }}"
             - conditions: "{{ wait.trigger and wait.trigger.event.data.actionName == 'later' }}"
