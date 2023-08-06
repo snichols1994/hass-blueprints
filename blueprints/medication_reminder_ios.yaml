@@ -171,7 +171,7 @@ action:
                   target:
                     entity_id: !input input_calendar
                   data:
-                    summary: '${vars[0] + vars[1]}'
+                    summary: '${vars[0] + vars[1]}'''
                     start_date_time: "{{ now() }}"
                     end_date_time: "{{ now() + timedelta(seconds=1) }}"
             - conditions: "{{ wait.trigger and wait.trigger.event.data.actionName == 'later' }}"
