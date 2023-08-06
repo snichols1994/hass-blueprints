@@ -19,10 +19,18 @@ blueprint:
 
     input_boolean:
       name: Dedicated input_boolean
-      description: Create and set here a input_boolean to handle history and state of the automation
+      description: Select the input_boolean to handle history and state of the automation
       selector:
         entity:
           domain: input_boolean
+          multiple: false
+    
+    input_calendar:
+      name: Dedicated Calendar
+      description: Select Local Calendar to use
+      selector:
+        entity:
+          domain: calendar
           multiple: false
 
     notification_title:
@@ -150,6 +158,13 @@ action:
                     name: !input notification_title
                     message: !input logbook_message_taken
                     entity_id: !input input_boolean
+                - service: calendar.create_event
+                  target:
+                    entity_id: !input input_calendar
+                  data:
+                    summary: "Medicine Taken"
+                    start_date_time: "{{ now() }}"
+                    end_date_time: "{{ now() + timedelta(seconds=1) }}"
             - conditions: "{{ wait.trigger and wait.trigger.event.data.actionName == 'later' }}"
               sequence:
                 - service: logbook.log
