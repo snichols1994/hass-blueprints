@@ -2,6 +2,7 @@ blueprint:
   name: Advanced medication reminder (iOS)
   description: Get advanced notification and history for medication reminder
   domain: automation
+  
   input:
     reminder_time:
       name: Reminder time
@@ -32,10 +33,14 @@ blueprint:
         entity:
           domain: calendar
           multiple: false
-
+          
     input_taken:
       name: Medication
       description: Enter the name of the medication to track
+
+    variables:
+      - !input input_taken
+      - " Taken"
 
     notification_title:
       name: Notification title (Optional)
@@ -166,7 +171,7 @@ action:
                   target:
                     entity_id: !input input_calendar
                   data:
-                    summary: !input input_taken + " Taken"
+                    summary: '${vars[0] + vars[1]}'
                     start_date_time: "{{ now() }}"
                     end_date_time: "{{ now() + timedelta(seconds=1) }}"
             - conditions: "{{ wait.trigger and wait.trigger.event.data.actionName == 'later' }}"
