@@ -33,6 +33,10 @@ blueprint:
           domain: calendar
           multiple: false
 
+    input_text:
+      name: Medication
+      description: Enter the name of the medication to track
+
     notification_title:
       name: Notification title (Optional)
       description: "Default: Medication reminder"
