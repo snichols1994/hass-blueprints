@@ -1,5 +1,5 @@
 blueprint:
-  name: Advanced medication reminder (iOS)
+  name: Advanced medication reminder (iOS) v2
   description: Get advanced notification and history for medication reminder
   domain: automation
   
