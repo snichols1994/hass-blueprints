@@ -106,7 +106,7 @@ blueprint:
 
     optional_action:
       name: Optional action
-      description: Run an action like notify a speaker at the same time that the mobile notification
+      description: Run an action like notify a speaker at the same time of the mobile notification
       selector:
         action: {}
       default: []
