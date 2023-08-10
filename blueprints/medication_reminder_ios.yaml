@@ -5,10 +5,16 @@ blueprint:
   
   input:
     reminder_time:
-      name: Reminder time
-      description: At what time do you want to be reminded
+      name: Reminder Time
+      description: Time to send notification
       selector:
         time: {}
+
+		reset_time:
+			name: Reset Time
+			description: Time to reset input_boolean
+			selector:
+				time: {}
 
     notify_device:
       name: Notification
@@ -34,8 +40,8 @@ blueprint:
           domain: calendar
           multiple: false
           
-    input_taken:
-      name: Medication
+    input_med_taken:
+      name: Medication Name
       description: Enter the name of the medication to track
 
   # variables:
@@ -43,33 +49,33 @@ blueprint:
   #   - ''' Taken'''
 
     notification_title:
-      name: Notification title (Optional)
+      name: Notification Title (Optional)
       description: "Default: Medication reminder"
-      default: "Medication reminder!"
+      default: "Medication Reminder"
 
     notification_message:
-      name: Notification message (Optional)
-      description: "Default: It's time to take your medication"
+      name: Notification Message (Optional)
+      description: "Default: It's time to take your medication!"
       default: "It's time to take your medication"
 
     notification_action_taken:
-      name: "Notification action: Taken (Optional)"
+      name: "Notification Action: Taken (Optional)"
       description: "Default: Taken"
       default: "Taken"
 
     notification_action_later:
-      name: "Notification action: Ask later (Optional)"
+      name: "Notification Action: Ask Later (Optional)"
       description: "Default: Ask later"
       default: "Ask later"
 
     notification_action_skip:
-      name: "Notification action: Skip (Optional)"
+      name: "Notification Action: Skip (Optional)"
       description: "Default: Skip"
       default: "Skip"
 
     ask_later_wait_time:
-      name: Wait time before next reminder
-      description: Minutes before notify again after a Ask later action.
+      name: Wait Time
+      description: Minutes before notifying again after an Ask Later action
       default: 30
       selector:
         number:
@@ -80,36 +86,48 @@ blueprint:
           mode: slider
 
     logbook_message_remind:
-      name: Logbook message for remind (Optional)
+      name: Logbook Message: Remind (Optional)
       description: "Default: Reminder sent"
       default: "Reminder sent"
 
     logbook_message_taken:
-      name: Logbook message for action Taken (Optional)
+      name: Logbook Message: Taken (Optional)
       description: "Default: Medication taken"
       default: "Medication taken"
 
     logbook_message_later:
-      name: Logbook message for action Ask later (Optional)
+      name: Logbook Message: Ask Later (Optional)
       description: "Default: Postpone reminder"
       default: "Postpone reminder"
 
     logbook_message_skip:
-      name: Logbook message for action Skip (Optional)
+      name: Logbook Message: Skip (Optional)
       description: "Default: Reminder skipped"
       default: "Reminder skipped"
 
     logbook_message_no_answer:
-      name: Logbook message for no action after timeout (Optional)
+      name: Logbook Message: Timeout (Optional)
       description: "Default: No answer time out"
       default: "No answer time out"
 
     optional_action:
-      name: Optional action
+      name: Optional Action
       description: Run an action like notify a speaker at the same time of the mobile notification
       selector:
         action: {}
       default: []
+
+trigger:
+
+	- platform: time
+		at: !input reset_time
+
+mode: restart
+
+action:
+	- service: input_boolean.turn_off
+		target:
+			entity_id: !input input_boolean
 
 trigger:
   - platform: time
