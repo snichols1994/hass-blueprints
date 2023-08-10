@@ -9,12 +9,12 @@ blueprint:
       description: Time to send notification
       selector:
         time: {}
-
-		reset_time:
-			name: Reset Time
-			description: Time to reset input_boolean
-			selector:
-				time: {}
+	
+    reset_time:
+      name: Reset Time
+      description: Time to reset input_boolean
+      selector:
+        time: {}
 
     notify_device:
       name: Notification
@@ -118,16 +118,15 @@ blueprint:
       default: []
 
 trigger:
-
-	- platform: time
-		at: !input reset_time
+  - platform: time
+    at: !input reset_time
 
 mode: restart
 
 action:
-	- service: input_boolean.turn_off
-		target:
-			entity_id: !input input_boolean
+  - service: input_boolean.turn_off
+    target:
+      entity_id: !input input_boolean
 
 trigger:
   - platform: time
