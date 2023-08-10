@@ -1,4 +1,4 @@
-blueprint:
+blueprint1:
   name: Advanced medication reminder (iOS)
   description: Get advanced notification and history for medication reminder
   domain: automation
