@@ -10,12 +10,6 @@ blueprint:
       selector:
         time: {}
 
-    reset_time:
-      name: Reset Time
-      description: Time to reset input_boolean
-      selector:
-        time: {}
-
     notify_device:
       name: Notification
       description: Device needs to run the official Home Assistant app to receive notifications
