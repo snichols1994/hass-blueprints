@@ -86,27 +86,27 @@ blueprint:
           mode: slider
 
     logbook_message_remind:
-      name: Logbook Message: Remind (Optional)
+      name: 'Logbook Message: Remind (Optional)'
       description: "Default: Reminder sent"
       default: "Reminder sent"
 
     logbook_message_taken:
-      name: Logbook Message: Taken (Optional)
+      name: 'Logbook Message: Taken (Optional)'
       description: "Default: Medication taken"
       default: "Medication taken"
 
     logbook_message_later:
-      name: Logbook Message: Ask Later (Optional)
+      name: 'Logbook Message: Ask Later (Optional)'
       description: "Default: Postpone reminder"
       default: "Postpone reminder"
 
     logbook_message_skip:
-      name: Logbook Message: Skip (Optional)
+      name: 'Logbook Message: Skip (Optional)'
       description: "Default: Reminder skipped"
       default: "Reminder skipped"
 
     logbook_message_no_answer:
-      name: Logbook Message: Timeout (Optional)
+      name: 'Logbook Message: Timeout (Optional)'
       description: "Default: No answer time out"
       default: "No answer time out"
 
@@ -116,18 +116,7 @@ blueprint:
       selector:
         action: {}
       default: []
-
-trigger:
-  - platform: time
-    at: !input reset_time
-
-mode: restart
-
-action:
-  - service: input_boolean.turn_off
-    target:
-      entity_id: !input input_boolean
-
+      
 trigger:
   - platform: time
     at: !input reminder_time
