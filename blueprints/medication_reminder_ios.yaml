@@ -9,7 +9,7 @@ blueprint:
       description: Time to send notification
       selector:
         time: {}
-	
+
     reset_time:
       name: Reset Time
       description: Time to reset input_boolean
