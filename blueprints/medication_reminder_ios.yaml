@@ -116,9 +116,9 @@ blueprint:
       selector:
         action: {}
       default: []
-      
+
 trigger:
-  - platform: time
+  - platform: 'time'
     at: !input reminder_time
 
 mode: restart
