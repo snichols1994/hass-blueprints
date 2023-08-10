@@ -8,7 +8,7 @@ blueprint:
       name: Reminder Time
       description: Time to send notification
       selector:
-        time: {'test':yourmom}
+        time: {}
 
     reset_time:
       name: Reset Time
