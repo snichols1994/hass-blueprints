@@ -1,5 +1,5 @@
 blueprint:
-  name: Group-Based ActionabledsaDSAdsadDSA Notification
+  name: Group-Based Actionable Notification
   description: >-
     A script that sends an actionable notification
   domain: script
