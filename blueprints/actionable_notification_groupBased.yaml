@@ -49,7 +49,7 @@ mode: restart
 
 sequence:
   - alias: "Send notification"
-    service: notify.household
+    service: !input notify_device
     data:
       title: !input title
       message: !input message
