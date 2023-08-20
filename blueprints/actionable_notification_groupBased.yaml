@@ -5,7 +5,7 @@ blueprint:
   domain: script
   input:
     notify_device:
-      name: Group1 to notify
+      name: Group to notify
       description: Devices need to run the official Home Assistant app to receive notifications.
       selector:
         service:
